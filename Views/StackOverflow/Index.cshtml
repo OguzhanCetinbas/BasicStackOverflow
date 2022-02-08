@@ -1,0 +1,163 @@
+﻿@model IEnumerable<Raklet.Models.EntityDataModel.SUBJECT>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        #navlist {
+            background-color: #0074D9;
+            position: absolute;
+            width: 100%;
+        }
+
+           
+            #navlist a {
+                float: left;
+                display: flex;
+                color: #f2f2f2;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 15px;
+                text-align: center;
+                margin-top:15px;
+                background-color:darkblue;
+                border-radius:5px;
+                margin-left:3%;
+            }
+
+        .navlist-right {
+            float: right;
+        }
+
+        
+        #navlist a:hover {
+            background-color: #ddd;
+            color: black;
+            border-radius
+        }
+
+        
+        .search input[type=text] {
+            width: 300px;
+            height: 25px;
+            border-radius: 25px;
+            border: none;
+        }
+
+        .search {
+            float: right;
+            margin: 7px;
+        }
+
+            .search button {
+                background-color: #0074D9;
+                color: #f2f2f2;
+                float: right;
+                padding: 5px 10px;
+                margin-right: 16px;
+                font-size: 12px;
+                border: none;
+                cursor: pointer;
+            }
+        .subject  {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 18%;
+            top: 7%;
+        }
+        .subject .table,td,th {
+            width:1000%;
+            border-collapse:collapse;
+            background-color:ghostwhite;  
+        }
+            .subject a {
+                text-decoration: none;
+                background-color: #0074D9;
+                border-radius: 25px;
+                color:white;
+            }
+                .subject a:hover {
+                    background-color:#ddd;
+                    border-radius:25px;
+                }
+    </style>
+</head>
+<body>
+    <nav id="navlist">
+        <div >
+            <a href="/StackOverflow/Index">Home</a>
+            <a href="#">About</a>
+
+            <div class="search">
+                @*<form action="@Url.Action("Search", "SOLUTION")" method="post">
+                    <input type="text"
+                           placeholder=" Search"
+                           name="search">
+                    <button>
+                        <i class="fa fa-search"
+                           style="font-size: 18px;">
+                        </i>
+                    </button>
+                </form>*@
+                @using (Html.BeginForm("Search", "StackOverflow", FormMethod.Get)) {
+                <p>
+                    @Html.TextBox("q")
+                    <input type="submit" value="Search" />
+                </p>
+                
+                }
+            </div>
+        </div>
+    </nav>
+    
+    <div class="subject">
+        <br>
+        <br />
+        <p>
+            <a class="NameStyle" href="/StackOverflow/Create">Create Problem</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PROBLEM)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PROBLEM)
+
+                        <br />
+                        <br />
+                        <hr />
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Details", "Details", new { id = item.SUBJECT_ID })
+                        <br />
+                        <br />
+                       
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

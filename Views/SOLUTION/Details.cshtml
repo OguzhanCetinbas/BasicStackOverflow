@@ -1,0 +1,58 @@
+﻿@model Raklet.Models.EntityDataModel.SOLUTION
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>SOLUTION</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NAME_SURENAME)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NAME_SURENAME)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.E_MAIL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.E_MAIL)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SOLUTION1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SOLUTION1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SUBJECT.PROBLEM)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SUBJECT.PROBLEM)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SOLUTION_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

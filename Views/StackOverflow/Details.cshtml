@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Raklet.Models.EntityDataModel.SOLUTION>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DetailProblems</title>
+    <style>
+        
+            .table,td,th
+
+        {
+            width: 1000%;
+            border-collapse: collapse;
+            background-color: ghostwhite;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Give Answer", "Create", "SOLUTION")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                <label>Answers</label>
+            </th>
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <pre>
+                    @Html.DisplayFor(modelItem => item.SOLUTION1)
+
+</pre>
+
+                    <p><b>Author :</b>@Html.DisplayFor(modelItem => item.NAME_SURENAME)</p>
+
+                    <br />
+                    <hr />
+                </td>
+                
+            </tr>
+            
+            
+        }
+
+    </table>
+    
+</body>
+</html>

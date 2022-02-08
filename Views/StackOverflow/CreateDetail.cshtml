@@ -1,0 +1,102 @@
+﻿@model  Raklet.Models.EntityDataModel.SOLUTION
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateDetail</title>
+</head>
+<body>
+    @using (Html.BeginForm("CreateDetail", "StackOverflow", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>SOLUTION</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.NAME_SURENAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea class="form-control" id="TextArea" rows="2" name="NAME_SURENAME"></textarea>
+                    @Html.ValidationMessageFor(model => model.NAME_SURENAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.E_MAIL, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea class="form-control" id="TextArea" rows="2" name="E_MAIL"></textarea>
+                    @Html.ValidationMessageFor(model => model.E_MAIL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.SOLUTION1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea class="form-control" id="TextArea" rows="2" name="SOLUTION"></textarea>
+                    @Html.ValidationMessageFor(model => model.SOLUTION1, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+    
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.SUBID, "SUBID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SUBID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SUBID, "", new { @class = "text-danger" })
+                </div>*@
+          @*  *@  <!--</div>-->
+            
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Answer</h5>    
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="https://localhost:44325/StackOverflow/CreateDetail" >
+                            <label for="fname"> Name:</label><br>
+                            <input type="text" id="fname" name="NAME_SURENAME"><br>
+                            <label for="lname">E-MAIL:</label><br>
+                            <input type="text" id="lname" name="E_MAIL"><br />
+                            <label for="fname">SOLUTION :</label><br>
+                            <input type="text" id="fname" name="SOLUTION"><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">                     
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+            </div>
+    }
+</body>
+</html>
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>

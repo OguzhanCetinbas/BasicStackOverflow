@@ -1,0 +1,51 @@
+﻿@model Raklet.Models.EntityDataModel.SUBJECT
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <style>
+        .form-group .col-md-10 .form-control{
+            
+        }
+
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Create","StackOverflow",FormMethod.Post)) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>SUBJECT</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PROBLEM, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.TextAreaFor(model => model.PROBLEM, new { htmlAttributes = new { style = "height:500px" } })*@
+                    <textarea class="form-control" id="TextArea" rows="20" name="PROBLEM"></textarea>
+                    @Html.ValidationMessageFor(model => model.PROBLEM, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

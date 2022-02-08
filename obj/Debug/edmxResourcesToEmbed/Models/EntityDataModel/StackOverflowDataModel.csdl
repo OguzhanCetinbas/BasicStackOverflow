@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StackOverflowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SOLUTION">
+    <Key>
+      <PropertyRef Name="SOLUTION_ID" />
+    </Key>
+    <Property Name="SOLUTION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME_SURENAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="E_MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUTION1" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SUBID" Type="Int32" />
+    <NavigationProperty Name="SUBJECT" Relationship="StackOverflowModel.FK__SOLUTION__SUBID__3A81B327" FromRole="SOLUTION" ToRole="SUBJECT" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="StackOverflowEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SOLUTION" EntityType="Self.SOLUTION" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="SUBJECT" EntityType="StackOverflowModel.SUBJECT" />
+    <AssociationSet Name="FK__SOLUTION__SUBID__3A81B327" Association="StackOverflowModel.FK__SOLUTION__SUBID__3A81B327">
+      <End Role="SUBJECT" EntitySet="SUBJECT" />
+      <End Role="SOLUTION" EntitySet="SOLUTION" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SUBJECT">
+    <Key>
+      <PropertyRef Name="SUBJECT_ID" />
+    </Key>
+    <Property Name="SUBJECT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROBLEM" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SOLUTION" Relationship="StackOverflowModel.FK__SOLUTION__SUBID__3A81B327" FromRole="SUBJECT" ToRole="SOLUTION" />
+  </EntityType>
+  <Association Name="FK__SOLUTION__SUBID__3A81B327">
+    <End Type="StackOverflowModel.SUBJECT" Role="SUBJECT" Multiplicity="0..1" />
+    <End Type="StackOverflowModel.SOLUTION" Role="SOLUTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUBJECT">
+        <PropertyRef Name="SUBJECT_ID" />
+      </Principal>
+      <Dependent Role="SOLUTION">
+        <PropertyRef Name="SUBID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

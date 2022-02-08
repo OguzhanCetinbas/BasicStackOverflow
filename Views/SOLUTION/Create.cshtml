@@ -1,0 +1,78 @@
+﻿@model Raklet.Models.EntityDataModel.SOLUTION
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <style>
+        .a {
+            height: 200px;
+            width: 500px;
+            text-align: start;
+            word-break: break-word;
+            display: inline-block;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Create", "SOLUTION", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>SOLUTION</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>NAME :</label> <br>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NAME_SURENAME, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NAME_SURENAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>E-MAIL :</label> <br>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.E_MAIL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.E_MAIL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>SOLUTION :</label> <br>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.SOLUTION1, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.EditorFor(model => model.SOLUTION1, new { htmlAttributes = new { @class = "a"  } })
+                    @Html.ValidationMessageFor(model => model.SOLUTION1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>CHOOSE A PROBLEM :</label> <br>
+                <div class="col-md-10">
+                    @Html.DropDownList("SUBID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SUBID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
